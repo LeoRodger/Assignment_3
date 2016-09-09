@@ -19,12 +19,12 @@ int main(int argc, char** argv)
 {
 	Mat img_1, img_2;
 	img_1 = imread(img_1_address, IMREAD_GRAYSCALE); //IMREAD_GRAYSCALE CV_LOAD_IMAGE_COLOR
-	img_2 = imread(img_2_address, IMREAD_GRAYSCALE); //IMREAD_GRAYSCALE CV_LOAD_IMAGE_COLOR
+	img_2 = imread(img_2_address, IMREAD_GRAYSCALE); 
 													 
 	cv::Ptr<Feature2D> f2d = xfeatures2d::SIFT::create();
 	//cv::Ptr<Feature2D> f2d = xfeatures2d::SURF::create();
 	//cv::Ptr<Feature2D> f2d = ORB::create();
-	// you get the picture, i hope..
+	
 
 	//-- Step 1: Detect the keypoints:
 	std::vector<KeyPoint> keypoints_1, keypoints_2;
