@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+#include <string>
 
 using namespace std;
 using namespace cv;
@@ -38,12 +39,20 @@ int main(int argc, char** argv)
 	cout << "SURF Feature Detection time taken: " << t << endl;
 	cout << ("keypoint number:") << keypoints_SIFT.size() << endl;
 	// drawing the results
+	Point text_position1, text_position2;
+	text_position1.x = 20;
+	text_position1.y = 25;
+	text_position2.x = 20;
+	text_position2.y = 50;
+
+	putText(img_1, to_string(t), text_position1, CV_FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2, 5);
+	putText(img_1, to_string(keypoints_SIFT.size()), text_position2, CV_FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2, 5);
 
 	namedWindow("SIFT Feature Detection", 1);
 	imshow("SIFT Feature Detection", img_1);
-///*
+
 	//orb section
-	//Mat img_1;
+	
 	img_1 = imread(img_1_address, IMREAD_GRAYSCALE); //IMREAD_GRAYSCALE CV_LOAD_IMAGE_COLOR
 														 
 	cv::Ptr<Feature2D> Of2d = ORB::create();
@@ -61,12 +70,14 @@ int main(int argc, char** argv)
 	
 
 	cout << "ORB Feature Detection time taken: " << t << endl;
-
 	cout << ("keypoint number:") << keypoints_orb.size()<< endl;
+
+	putText(img_1, to_string(t), text_position1, CV_FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2, 5);
+	putText(img_1, to_string(keypoints_orb.size()), text_position2, CV_FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2, 5);
 
 	// drawing the results
 	namedWindow("ORB Feature Detection", 1);
-	imshow("ORB Feature Detection", img_1);//*/
+	imshow("ORB Feature Detection", img_1);
 	
 
 	waitKey(0);
