@@ -21,5 +21,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="codedump.txt" />
+    <Text Include="code_dump.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

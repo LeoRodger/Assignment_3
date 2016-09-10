@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="codedump.txt" />
+    <Text Include="code_dump.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
