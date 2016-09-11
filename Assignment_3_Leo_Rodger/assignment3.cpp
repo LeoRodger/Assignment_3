@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	cv::Ptr<cv::Feature2D> f2d = cv::xfeatures2d::SIFT::create();
 
 	//start time
-	double sift_t = (double)cv::getTickCount();
+	double sift_time = (double)cv::getTickCount();
 
 	//Create vector and Detect the keypoints
 	std::vector<cv::KeyPoint> keypoints_SIFT;
@@ -29,22 +29,22 @@ int main(int argc, char** argv)
 	drawKeypoints(img_1, keypoints_SIFT, img_1);
 
 	// Get time taken
-	sift_t = ((double)cv::getTickCount() - sift_t) / cv::getTickFrequency();
+	sift_time = ((double)cv::getTickCount() - sift_time) / cv::getTickFrequency();
 
 	//Output time and number of key points to console		
-	std::cout << "SURF Feature Detection time taken: " << sift_t << std::endl;
+	std::cout << "SURF Feature Detection time taken: " << sift_time << std::endl;
 	std::cout << ("keypoint number:") << keypoints_SIFT.size() << std::endl;
 
 	//  Image position of results
-	cv::Point text_position1, text_position2;
-	text_position1.x = 20;
-	text_position1.y = 25;
-	text_position2.x = 20;
-	text_position2.y = 50;
+	cv::Point text_position_time, text_position_keypoints;
+	text_position_time.x = 20;
+	text_position_time.y = 25;
+	text_position_keypoints.x = 20;
+	text_position_keypoints.y = 50;
 
 	putText(img_1,                //InputOutputArray
-		   std::to_string(sift_t),  //convert time to string
-		   text_position1,          //Point org
+		   std::to_string(sift_time),  //convert time to string
+		   text_position_time,          //Point org
 		   CV_FONT_HERSHEY_SIMPLEX, //fontFace
 		   1,                       //fontScale
 		   cv::Scalar(255, 0, 0),   //color 
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 
 	putText(img_1,                              //InputOutputArray
 		   std::to_string(keypoints_SIFT.size()), //convert time to string
-		   text_position2,                        //Point org
+		   text_position_keypoints,                        //Point org
 		   CV_FONT_HERSHEY_SIMPLEX,               //fontFace
 		   1,                                     //fontScale
 		   cv::Scalar(255, 0, 0),                 //color 
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 	// drawing the results
 	putText(img_1,             //InputOutputArray
 		std::to_string(ORB_t),   //convert time to string
-		text_position1,          //Point org
+		text_position_time,          //Point org
 		CV_FONT_HERSHEY_SIMPLEX, //fontFace
 		1,                       //fontScale
 		cv::Scalar(255, 0, 0),   //color 
@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 
 	putText(img_1,                          //InputOutputArray
 		std::to_string(keypoints_orb.size()), //convert time to string
-		text_position2,                       //Point org
+		text_position_keypoints,                       //Point org
 		CV_FONT_HERSHEY_SIMPLEX,              //fontFace
 		1,                                    //fontScale
 		cv::Scalar(255, 0, 0),                //color 
