@@ -2,7 +2,7 @@
 Date:        11 September 2016
 Author:      Leo Rodger
 File Name:   assignment3.cpp, assignment3.h
-Description: This is a program for Assingment 3: comparison of feacture 
+Description: This is a program for Assignment 3: comparison of feature 
 detection, for 282.772 Industrial System Design and Integration. 
 *****************************************************************************/
 
