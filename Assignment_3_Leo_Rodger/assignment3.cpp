@@ -8,12 +8,12 @@ detection, for 282.772 Industrial System Design and Integration.
 
 #include "assignment3.h"
 
-const char *img_1_address = "image_1.jpg";
+const char *KImage_1_Address = "image_1.jpg";
 
 int main(int argc, char** argv)
 {
 	//SIFT feature detection
-	cv::Mat img_1 = imread(img_1_address, cv::IMREAD_GRAYSCALE);
+	cv::Mat image_1 = imread(KImage_1_Address, cv::IMREAD_GRAYSCALE);
 
 	//Initiate SIFT												 
 	cv::Ptr<cv::Feature2D> f2d = cv::xfeatures2d::SIFT::create();
@@ -23,10 +23,10 @@ int main(int argc, char** argv)
 
 	//Create vector and Detect the keypoints
 	std::vector<cv::KeyPoint> keypoints_SIFT;
-	f2d->detect(img_1, keypoints_SIFT);
+	f2d->detect(image_1, keypoints_SIFT);
 
 	//Draw Key points
-	drawKeypoints(img_1, keypoints_SIFT, img_1);
+	drawKeypoints(image_1, keypoints_SIFT, image_1);
 
 	// Get time taken
 	sift_time = ((double)cv::getTickCount() - sift_time) / cv::getTickFrequency();
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 	text_position_keypoints.x = 20;
 	text_position_keypoints.y = 50;
 
-	putText(img_1,                //InputOutputArray
+	putText(image_1,                //InputOutputArray
 		   std::to_string(sift_time),  //convert time to string
 		   text_position_time,          //Point org
 		   CV_FONT_HERSHEY_SIMPLEX, //fontFace
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 		   2,                       //thickness
 		   5);                      //lineType
 
-	putText(img_1,                              //InputOutputArray
+	putText(image_1,                              //InputOutputArray
 		   std::to_string(keypoints_SIFT.size()), //convert time to string
 		   text_position_keypoints,                        //Point org
 		   CV_FONT_HERSHEY_SIMPLEX,               //fontFace
@@ -61,11 +61,11 @@ int main(int argc, char** argv)
 		   5);                                    //lineType
 
 	cv::namedWindow("SIFT Feature Detection", 1); //create window
-	imshow("SIFT Feature Detection", img_1);  //outputArray to window
-	imwrite("result_sift.jpg", img_1); //store the result_sift image
+	imshow("SIFT Feature Detection", image_1);  //outputArray to window
+	imwrite("result_sift.jpg", image_1); //store the result_sift image
 
 	// ORB feature detection
-  img_1 = imread(img_1_address, cv::IMREAD_GRAYSCALE); //Reload clean image
+	image_1 = imread(KImage_1_Address, cv::IMREAD_GRAYSCALE); //Reload clean image
 
 	//Initiate ORB													 
   cv::Ptr<cv::Feature2D> Of2d = cv::ORB::create();
@@ -75,10 +75,10 @@ int main(int argc, char** argv)
 
 	//Create vector and Detect the keypoints
 	std::vector<cv::KeyPoint> keypoints_orb;
-	Of2d->detect(img_1, keypoints_orb);
+	Of2d->detect(image_1, keypoints_orb);
 
 	//Draw Key points
-	drawKeypoints(img_1, keypoints_orb, img_1);
+	drawKeypoints(image_1, keypoints_orb, image_1);
 
 	// Get time taken
 	ORB_t = ((double)cv::getTickCount() - ORB_t) / cv::getTickFrequency();
@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 	std::cout << ("keypoint number:") << keypoints_orb.size()<< std::endl;
 
 	// drawing the results
-	putText(img_1,             //InputOutputArray
+	putText(image_1,             //InputOutputArray
 		std::to_string(ORB_t),   //convert time to string
 		text_position_time,          //Point org
 		CV_FONT_HERSHEY_SIMPLEX, //fontFace
@@ -97,7 +97,7 @@ int main(int argc, char** argv)
 		2,                       //thickness
 		5);                      //lineType
 
-	putText(img_1,                          //InputOutputArray
+	putText(image_1,                          //InputOutputArray
 		std::to_string(keypoints_orb.size()), //convert time to string
 		text_position_keypoints,                       //Point org
 		CV_FONT_HERSHEY_SIMPLEX,              //fontFace
@@ -107,8 +107,8 @@ int main(int argc, char** argv)
 		5);                                   //lineType
 
 	cv::namedWindow("ORB Feature Detection", 1); //create window
-	imshow("ORB Feature Detection", img_1);  //outputArray to window
-	imwrite("result_orb.jpg", img_1); //store the result_orb image
+	imshow("ORB Feature Detection", image_1);  //outputArray to window
+	imwrite("result_orb.jpg", image_1); //store the result_orb image
 
 	cv::waitKey(0); //wait for window to be closed
 }
